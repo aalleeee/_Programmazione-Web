@@ -3,7 +3,7 @@ http://latemar.science.unitn.it/segue_userFiles/2022ProgrammazioneWeb/08-JSP.pdf
 
 ---
 ## Scambio informazioni WebApp
-![webAppInformationSchema](webAppInformationSchema.png)
+![webAppInformationSchema](/Content/webAppInformationSchema.png)
 - le informazioni di ogni utente sono memorizzate tramite sessione
 	- una sessione per un utente
 - tutto quello che non riguarda un utente specifico è nelle servlet
