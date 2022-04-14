@@ -99,10 +99,70 @@ Esempio slide 33 - 34
 		- inclusione statica (html) o dinamica (jsp o servlet) a run-time
 - forward
 	- `<jsp:forward page=“URL” />`
-- useBean
+- useBean ([[#Javabean]])
 	- `<jsp:useBean id= "instanceNamescope ="page|request|session|application" class="..." type="..." beanName="..."</jsp:useBean>`
 	-  voglio caricare e usare una classe java esterna
 	- ho parametri
 		- nomeIstanza (id)
 		- classe che voglio caricare (class = , type=)
 		- scope: dove var vive (opzioni: page, request, session, application)
+
+## Best practies JSP
+- non troppo codice java
+- scegliere il meccanismo giusto
+	- dati statici in file separanti e non (ri)generati dinamicamente
+	- contenuti statici con direttiva `<%@ include file... %>`
+	- contenuti dinamici a run time con `<jsp include page ...>`
+		- pagine jsp o servlet
+- non mescolare logica e presentazione
+- usare [[#Filters]] se necessario
+- usare database per informazioni persistenti
+	- pooling connection
+
+
+## Filters
+Importante distinguere pagine pubbliche e ad accesso limitato
+- scrittura codice diverso
+- nelle seconde devo verificare se cliente ha sessione e se è identificato
+	- altrimenti devo mandarlo a pagina di login (pubblica) 
+- quindi da utente che va a pagine accesso limitato c'è pagina di check che controlla se session è in essere
+	- e li o login o pagina a cui vuole accedere
+
+Quindi tutte pagine ad accesso limitato devono avere codice di controllo che è sempre lo stesso
+- c'è un pattern per questo:
+
+Filtro
+- tecnologia per scrivere in modo compatto questa logica chiamata da tutte pagine limitare
+	- meglio se c'è livello dichiarativo in cui specifico quali pagine devono passare attraverso filtro (nel web.xml) cosi ho un filtro solo e elenco pagine che devono chiamarlo
+
+
+## MVC
+![](http://www.setgetweb.com/p/rational/com.ibm.etools.struts.doc_6.0.0/images/cstrdoc001a.gif)
+
+Modello di solito usato quando c'è grafica da trattare
+- M odel: dati
+- V iewer : presentation
+- C ontroller : action business logic
+Slide 38
+
+
+## Javabean
+- classe java che 
+	- fornisce costruttore pubblico senza argomenti
+	- implementa *Serializable*
+	- se pattern design di JavaBenas
+		- metodi Set / Get
+	- thread safe
+- es slide 39
+
+
+## Standard actions involving beans
+- `<jsp:useBean id=“name” class=“fully_qualified_pathname” scope=“{request|session|application}” />`
+
+- `<jsp:setProperty name=“nome” property=“value” />`
+- `<jsp:getProperty name=“nome” property=“value” />`
+
+Pay attention to the scope!
+- slide 47
+
+ESEMPIO DA SLIDE 41
