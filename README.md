@@ -10,3 +10,6 @@
 - [8 JSP e scambio di informazioni](8%20JSP%20e%20scambio%20di%20informazioni.md)
 - 9 CSS
 - [10 Javascript](10%20Javascript.md)
+- [[11 Javascript Objects]]
+- 12 DOM
+- [[13 TypeScript]]

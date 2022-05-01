@@ -112,3 +112,117 @@ var x = + y;              // x is a number (NaN)
 var x = function (a, b) {return a * b};
 product=x(2,3);
 ```
+
+## Hoisting
+- hoisting: meccanismo che sposta dichiarazione (non definizione) di funzioni e variabili al top del loro scope prima dell'esecuzione
+- **muove solo la dichiarazione**
+- l'assegnamento rimane dov'è
+
+
+## Espressioni di funzioni
+- `var x = function (a, b) {return a * b};`
+- e poi posso fare
+	- `y=x(2,3);`
+- altro esempio
+
+`var fundef = function() { document.write('Hello'); };`
+`fundef();`
+
+## Function expressions and hoisting
+- espressioni delle funzioni caricate solo quando l'interprete raggiunge quella linea di codice
+- **Function expressions are not hoisted**
+esempio:
+```js
+fundef(); // -> ERRORE : l'espressione non è una funzione
+
+var fundef = function() {
+	console.log('This will not work.');
+};
+```
+
+## Arrow functions
+
+```js
+- function multiplyByTwo(num){ return num * 2;}
+
+- const multiplyByTwo=function (num){ return num * 2;}
+- const multiplyByTwo= (num) => { return num * 2;}
+- const multiplyByTwo= num =>{ return num * 2;}
+- const multiplyByTwo= num => num * 2;
+```
+
+## Mapping and filtering functions
+```js
+twodArray = [1,2,3,4];
+document.write( twodArray.map( num => num * 2) );
+```
+output: 2,4,6,8
+
+```js
+twodArray = [1,2,3,4];
+document.write( twodArray.filter( num => num % 2 == 0));
+```
+output: 2,4
+
+
+## Scoping
+- notare che se provo ad usare una variabile mai dichiarata avrò un errore `ReferenceError`
+	- ad eccezione se uso typeof(variabile) che avrà come output `undefined`
+
+- scope:
+
+| Tipo di dichiarazione | Scope             | Note                         |
+| ----------------- | ----------------- | ---------------------------- |
+| x = 10            | sempre globale    |                              |
+| **var** x = 10    | scope di funzione | se è nel main è come globale |
+| **let** x = 10    | scope di blocco   |                              |
+
+
+## Variable hoisting
+- codice:
+...
+...
+var x = 10
+- hoisting:
+var x
+...
+...
+x = 10
+
+
+---
+
+ESEMPIO SLIDE 52 **<-**
+
+## Variable redefinition
+```js
+var x = 10;
+// Here x is 10
+{ 
+	x = 2; 
+	// Here x is 2
+}
+// Here x is 2
+```
+```js
+var x = 10;
+// Here x is 10
+{ 
+	var x = 2; 
+	// Here x is 2
+}
+// Here x is 2
+```
+```js
+var x = 10;
+// Here x is 10
+{ 
+	let x = 2; 
+	// Here x is 2
+}
+// Here x is 10
+```
+
+---
+
+!! ** ESEMPI DA SLIDE 54 ** !!
